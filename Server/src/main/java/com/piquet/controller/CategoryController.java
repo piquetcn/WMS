@@ -5,6 +5,7 @@ import com.piquet.pojo.PageBean;
 import com.piquet.pojo.Result;
 import com.piquet.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping
-    public Result add(Category category) {
+    public Result add(@RequestBody @Validated(Category.Add.class) Category category) {
         categoryService.add(category);
         return Result.success();
     }
@@ -27,11 +28,12 @@ public class CategoryController {
     }
 
     @PutMapping
-    public Result update(Category category) {
+    public Result update(@RequestBody @Validated(Category.Update.class) Category category) {
         categoryService.update(category);
         return Result.success();
     }
 
+    @GetMapping
     public Result<PageBean<Category>> list(
             Integer pageNum,
             Integer pageSize,
