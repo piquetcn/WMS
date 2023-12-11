@@ -1,0 +1,14 @@
+package com.piquet.service;
+
+import com.piquet.pojo.Goods;
+import com.piquet.pojo.PageBean;
+
+public interface GoodsService {
+    void add(Goods goods);
+
+    void delete(Integer id);
+
+    void update(Goods goods);
+
+    PageBean<Goods> list(Integer pageNum, Integer pageSize, String goodsNum, String goodsName, String goodsCategory, Boolean state);
+}
