@@ -181,17 +181,10 @@ const goods = ref([
 
 import { ElMessage, ElMessageBox } from 'element-plus'
 
-const getTemplateHeight = () => {
-    // 获取页面宽度和高度
-    var pageWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    var pageHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-    console.log("页面宽度: " + pageWidth);
-    console.log("页面高度: " + pageHeight);
-
-    return pageHeight - 120;
-}
-
+const goodsNum = ref('')
+const goodsName = ref('')
+const goodsCategory = ref('')
+const state = ref(1)
 
 //分页条数据模型
 const pageNum = ref(1)//当前页
@@ -208,7 +201,6 @@ const onCurrentChange = (num) => {
     pageNum.value = num
     articleList();
 }
-
 
 const isImageUrl = (url) => {
     // 忽略大小写
@@ -261,23 +253,23 @@ const getTableHeight = () => {
         <div class="form" ref="formRef">
             <el-form :inline="true" class="form-inline">
                 <el-form-item label="商品编码：">
-                    <el-input placeholder="Approved by" clearable />
+                    <el-input placeholder="" clearable />
                 </el-form-item>
 
                 <el-form-item label="商品名称：">
-                    <el-input placeholder="Approved by" clearable />
+                    <el-input placeholder="" clearable />
                 </el-form-item>
                 <br />
                 <el-form-item label="商品分类：">
-                    <el-select placeholder="Activity zone" clearable>
+                    <el-select placeholder="请选择" clearable>
                         <el-option label="Zone one" value="shanghai" />
                         <el-option label="Zone two" value="beijing" />
                     </el-select>
                 </el-form-item>
                 <el-form-item label="商品状态：">
-                    <el-select placeholder="Activity zone" clearable>
-                        <el-option label="在售中" value="shanghai" />
-                        <el-option label="已下架" value="beijing" />
+                    <el-select placeholder="请选择" >
+                        <el-option label="在售中" value=1 />
+                        <el-option label="已下架" value=0 />
                     </el-select>
                 </el-form-item>
                 <el-form-item>
