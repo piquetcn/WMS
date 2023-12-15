@@ -33,11 +33,11 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public PageBean<Warehouse> list(Integer pageNum, Integer pageSize, String warehouseNum, String warehouseName, Boolean state) {
+    public PageBean<Warehouse> list(Integer pageNum, Integer pageSize, String warehouseCode, String warehouseName, Boolean state) {
         PageBean<Warehouse> pb = new PageBean<>();
         PageHelper.startPage(pageNum, pageSize);
 
-        List<Warehouse> as = warehouseMapper.list(warehouseNum, warehouseName, state);
+        List<Warehouse> as = warehouseMapper.list(warehouseCode, warehouseName, state);
         Page<Warehouse> p = (Page<Warehouse>) as;
 
         pb.setTotal(p.getTotal());

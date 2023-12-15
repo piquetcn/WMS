@@ -6,6 +6,7 @@ import com.piquet.mapper.CategoryMapper;
 import com.piquet.pojo.Category;
 import com.piquet.pojo.PageBean;
 import com.piquet.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
+    @Autowired
     private CategoryMapper categoryMapper;
 
     @Override
@@ -42,5 +44,11 @@ public class CategoryServiceImpl implements CategoryService {
         pb.setItems(p.getResult());
 
         return pb;
+    }
+
+    @Override
+    public List<Category> findAll() {
+        List<Category> cl = categoryMapper.findAll();
+        return cl;
     }
 }

@@ -4,7 +4,7 @@ import {
     Edit,
     Delete
 } from '@element-plus/icons-vue'
-import { ref } from 'vue';
+import { ref, nextTick, onMounted } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 const headerRef = ref();
@@ -145,6 +145,34 @@ const deleteSupplier = (row) => {
 
         })
 }
+
+//多选项操作
+// const selectedRows = ref()
+// const isNoSelect = ref(true)
+// const handleSelectionChange = (selection) => {
+//     if (!selection) {
+//         isNoSelect.value = true;
+//     } else {
+//         selectedRows.value = selection;
+//         console.log(selectedRows.value);
+//         isNoSelect.value = false;
+//     }
+// }
+
+// const tableRef = ref(null)
+// onMounted(() => {
+//     console.log(tableRef);
+//     tableRef.value.toggleAllSelection();
+// })
+
+// const clearSelect = () => {
+//     console.log(tableRef.value);
+//     tableRef.value.clearSeleciton();
+//     console.log(selectedRows.value);
+    
+// }
+
+
 </script>
 
 <template>
@@ -172,10 +200,24 @@ const deleteSupplier = (row) => {
             </el-form>
         </div>
 
-        <el-table :data="suppliers" style="width: 100%" :height="getTableHeight()" border>
-            <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
-            <el-table-column label="名称" prop="supplierName" width="300"></el-table-column>
-            <el-table-column label="地址" prop="supplierAddr" width="300"></el-table-column>
+        <!-- 多选操作 -->
+        <!-- <div v-else class="form" ref="formRef">
+            <el-form :inline="true" class="form-inline">
+                <el-form-item>
+                    <el-button type="primary" plain>全选</el-button>
+                    <el-button @click="">反选</el-button>
+                    <el-button @click="clearSelect">不选</el-button>
+                    <el-button type="success" plain>导出</el-button>
+                    <el-button type="danger" plain>删除</el-button>
+                </el-form-item>
+            </el-form>
+        </div> -->
+
+        <el-table ref="tableRef" :data="suppliers" style="width: 100%" :height="getTableHeight()" border
+            @selection-change="handleSelectionChange">
+            <el-table-column type="selection" width="68" align="center" />
+            <el-table-column label="名称" prop="supplierName" width="280"></el-table-column>
+            <el-table-column label="地址" prop="supplierAddr" width="320"></el-table-column>
             <el-table-column label="联系人" prop="contacts" width="150"></el-table-column>
             <el-table-column label="联系电话" prop="phone" width="200"></el-table-column>
             <el-table-column label="备注" prop="remarks" align="left"></el-table-column>
@@ -190,10 +232,19 @@ const deleteSupplier = (row) => {
             </template>
         </el-table>
 
-        <div class="pagination" ref="paginationRef">
-            <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[10, 20, 30, 50]"
-                layout="jumper, total, sizes, prev, pager, next" background :total="total" @size-change="onSizeChange"
-                @current-change="onCurrentChange" style=" margin-top: 20px;justify-content: flex-end" />
+        <div class="footer">
+            <!-- <div class="multipleSelection"> -->
+            <!-- <el-button type="primary" size="large" @click="allSelect" plain>全选</el-button> -->
+            <!-- <el-button  @click="" size="large">反选</el-button> -->
+            <!-- <el-button @click="clearSelect" size="large">不选</el-button> -->
+            <!-- <el-button type="success" size="large" @click="" plain>导出</el-button> -->
+            <!-- <el-button type="danger" size="large" @click="" plain>删除</el-button> -->
+            <!-- </div> -->
+            <div class="pagination" ref="paginationRef">
+                <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[10, 20, 30, 50]"
+                    layout="jumper, total, sizes, prev, pager, next" background :total="total" @size-change="onSizeChange"
+                    @current-change="onCurrentChange" style=" margin-top: 20px;justify-content: flex-end" />
+            </div>
         </div>
 
         <!-- 添加分类弹窗 -->
@@ -269,5 +320,6 @@ const deleteSupplier = (row) => {
             width: 220px;
         }
     }
+
 }
 </style>

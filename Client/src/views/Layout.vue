@@ -13,7 +13,8 @@ import {
     Promotion,
     UserFilled,
     SwitchButton,
-    CaretBottom
+    CaretBottom,
+    Document
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
 
@@ -90,12 +91,26 @@ const handleCommand = (command) => {
                     </el-icon>
                     <span>首页</span>
                 </el-menu-item>
-                <el-menu-item index="/goods/manage">
-                    <el-icon>
-                        <Goods />
-                    </el-icon>
-                    <span>商品管理</span>
-                </el-menu-item>
+                <el-sub-menu index=1>
+                    <template #title>
+                        <el-icon>
+                            <Goods />
+                        </el-icon>
+                        <span>商品管理</span>
+                    </template>
+                    <el-menu-item index="/goods/category">
+                        <el-icon>
+                            <Document />
+                        </el-icon>
+                        <span>商品分类</span>
+                    </el-menu-item>
+                    <el-menu-item index="/goods/manage">
+                        <el-icon>
+                            <Document />
+                        </el-icon>
+                        <span>商品信息</span>
+                    </el-menu-item>
+                </el-sub-menu>
                 <el-menu-item index="/inboundSummary/manage">
                     <el-icon>
                         <SoldOut />
@@ -115,9 +130,9 @@ const handleCommand = (command) => {
                     <span>仓库管理</span>
                 </el-menu-item>
 
-                <el-sub-menu index=1>
-                <template #title>
-                    <el-icon>
+                <el-sub-menu index=2>
+                    <template #title>
+                        <el-icon>
                             <User />
                         </el-icon>
                         <span>个人中心</span>
@@ -143,7 +158,7 @@ const handleCommand = (command) => {
                 </el-sub-menu>
 
                 <!-- 网站管理 -->
-                <el-sub-menu v-if="userInfoStore.info.role == 'root'" index=2>
+                <el-sub-menu v-if="userInfoStore.info.role == 'root'" index=99>
                     <!-- <el-sub-menu> -->
                     <template #title>
                         <el-icon>

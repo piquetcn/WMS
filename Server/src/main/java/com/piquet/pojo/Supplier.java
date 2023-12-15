@@ -14,6 +14,7 @@ public class Supplier {
     private String supplierName;    //供应商名称
     private String supplierAddr;    //供应商地址
     private String contacts;        //联系人
+    @NotEmpty
     private String phone;           //联系电话
     private String remarks;         //备注
 

@@ -68,11 +68,11 @@ public class UserController {
 
         // 判断密码是否错误
         if (Md5Util.getMD5String(password).equals(loginUser.getPassword())) {
-            // 登录成功
+            // 密码正确
+            // 生成token
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", loginUser.getId());
             claims.put("username", loginUser.getUsername());
-            claims.put("nickname", loginUser.getNickname());
             String token = JwtUtil.genToken(claims);
 
             // 把token存储到redis

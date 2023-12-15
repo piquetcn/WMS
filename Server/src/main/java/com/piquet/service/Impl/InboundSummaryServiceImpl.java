@@ -29,14 +29,14 @@ public class InboundSummaryServiceImpl implements InboundSummaryService {
         inboundSummary.setUpdateTime(LocalDateTime.now());
 
         Map<String, Object> map = ThreadLocalUtil.get();
-        String nickname = (String) map.get("nickname");
+        Integer user_id = (Integer) map.get("id");
 
-        inboundSummary.setOperator(nickname);
+        inboundSummary.setOperator(user_id);
         inboundSummaryMapper.addSummary(inboundSummary);
 
         if (! inboundSummary.getInboundDetailList().isEmpty()) {
 
-            Integer sid = inboundSummaryMapper.findSummaryIdByInboundNum(inboundSummary.getInboundNum());
+            Integer sid = inboundSummaryMapper.findSummaryIdByInboundNum(inboundSummary.getInboundCode());
 
             for (InboundDetail inboundDetail:
                  inboundSummary.getInboundDetailList()) {
@@ -53,8 +53,8 @@ public class InboundSummaryServiceImpl implements InboundSummaryService {
     }
 
     @Override
-    public PageBean<InboundSummary> list(Integer pageNum, Integer pageSize, String inboundNum, String supplierName, String startDate, String endDate) {
-        List<InboundSummary> isl = inboundSummaryMapper.list(inboundNum, supplierName, startDate, endDate);
+    public PageBean<InboundSummary> list(Integer pageNum, Integer pageSize, String inboundCode, Integer supplierId, String startDate, String endDate) {
+        List<InboundSummary> isl = inboundSummaryMapper.list(inboundCode, supplierId, startDate, endDate);
 
         Integer startIdx = (pageNum - 1) * pageSize;
         Integer endIdx = Math.min(startIdx + pageSize, isl.size());

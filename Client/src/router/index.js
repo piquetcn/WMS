@@ -5,6 +5,7 @@ import HomeVue from '@/views/home.vue'
 import LoginVue from '@/views/Login.vue'
 import LayoutVue from '@/views/Layout.vue'
 
+import GoodsCategoryVue from '@/views/goods/GoodsCategory.vue'
 import GoodsManageVue from '@/views/goods/GoodsManage.vue'
 import SupplierManageVue from '@/views/supplier/SupplierManage.vue'
 import WarehouseManageVue from '@/views/warehouse/WarehouseManage.vue'
@@ -18,6 +19,7 @@ const routes = [
     {
         path: '/', component: LayoutVue, redirect: '/home', children: [
             { path: '/home', component: HomeVue },
+            { path: '/goods/category', component: GoodsCategoryVue },
             { path: '/goods/manage', component: GoodsManageVue },
             { path: '/supplier/manage', component: SupplierManageVue },
             { path: '/warehouse/manage', component: WarehouseManageVue },

@@ -1,13 +1,13 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.100:3306/WMS
+    url: jdbc:mysql://192.168.5.100:23306/WMS
     username: root
     password: 123456
   data:
     redis:
-      host: 192.168.0.100
-      port: 6379
+      host: 192.168.5.100
+      port: 26379
 mybatis:
   configuration:
 

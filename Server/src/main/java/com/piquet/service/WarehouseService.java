@@ -10,5 +10,5 @@ public interface WarehouseService {
 
     void update(Warehouse warehouse);
 
-    PageBean<Warehouse> list(Integer pageNum, Integer pageSize, String warehouseNum, String warehouseName, Boolean state);
+    PageBean<Warehouse> list(Integer pageNum, Integer pageSize, String warehouseCode, String warehouseName, Boolean state);
 }

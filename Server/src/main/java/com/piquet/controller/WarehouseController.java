@@ -37,11 +37,11 @@ public class WarehouseController {
     public Result<PageBean<Warehouse>> list(
             Integer pageNum,
             Integer pageSize,
-            @RequestParam(required = false) String warehouseNum,
+            @RequestParam(required = false) String warehouseCode,
             @RequestParam(required = false) String warehouseName,
             @RequestParam(required = false) Boolean state
     ) {
-        PageBean<Warehouse> pb = warehouseService.list(pageNum, pageSize, warehouseNum, warehouseName, state);
+        PageBean<Warehouse> pb = warehouseService.list(pageNum, pageSize, warehouseCode, warehouseName, state);
         return Result.success(pb);
     }
 }

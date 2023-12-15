@@ -33,11 +33,11 @@ public class GoodServiceImpl implements GoodsService {
     }
 
     @Override
-    public PageBean<Goods> list(Integer pageNum, Integer pageSize, String goodsNum, String goodsName, String goodsCategory, Boolean state) {
+    public PageBean<Goods> list(Integer pageNum, Integer pageSize, String goodsNum, String goodsCode, Integer categoryId, Boolean state) {
         PageBean<Goods> pb = new PageBean<>();
         PageHelper.startPage(pageNum, pageSize);
 
-        List<Goods> gs = goodsMapper.list(goodsNum, goodsName, goodsCategory, state);
+        List<Goods> gs = goodsMapper.list(goodsNum, goodsCode, categoryId, state);
         Page<Goods> p = (Page<Goods>) gs;
 
         pb.setTotal(p.getTotal());

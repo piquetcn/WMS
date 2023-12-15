@@ -37,12 +37,12 @@ public class GoodsController {
     public Result<PageBean<Goods>> list (
             Integer pageNum,
             Integer pageSize,
-            @RequestParam(required = false) String goodsNum,
+            @RequestParam(required = false) String goodsCode,
             @RequestParam(required = false) String goodsName,
-            @RequestParam(required = false) String goodsCategory,
+            @RequestParam(required = false) Integer categoryId,
             @RequestParam(required = false) Boolean state
     ) {
-        PageBean<Goods> pb = goodsService.list(pageNum, pageSize, goodsNum, goodsName, goodsCategory, state);
+        PageBean<Goods> pb = goodsService.list(pageNum, pageSize, goodsCode, goodsName, categoryId, state);
         return Result.success(pb);
     }
 }

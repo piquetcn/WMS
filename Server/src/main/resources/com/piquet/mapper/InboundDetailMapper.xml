@@ -7,17 +7,17 @@
     <resultMap id="BaseResult" type="com.piquet.pojo.InboundDetail">
         <id column="id" property="id"/>
         <result column="summary_id" property="summaryId"/>
-        <result column="goods_num" property="goodsNum"/>
+        <result column="goods_id" property="goodsId"/>
         <result column="quantity" property="quantity"/>
         <result column="price" property="price"/>
         <result column="total" property="total"/>
-        <result column="warehouse_num" property="warehouseNum"/>
+        <result column="warehouse_id" property="warehouseId"/>
         <result column="state" property="state"/>
         
         <association property="inboundSummary" javaType="com.piquet.pojo.InboundSummary">
             <id column="sid" property="id"/>
-            <result column="inbound_num" property="inboundNum"/>
-            <result column="supplier_name" property="supplierName"/>
+            <result column="inbound_code" property="inboundCode"/>
+            <result column="supplier_id" property="supplierId"/>
             <result column="operator" property="operator"/>
             <result column="added_time" property="addedTime"/>
             <result column="update_time" property="updateTime"/>
@@ -30,15 +30,15 @@
         SELECT
             d.id,
             d.summary_id,
-            d.goods_num,
+            d.goods_id,
             d.quantity,
             d.price,
             d.total,
-            d.warehouse_num,
+            d.warehouse_id,
             d.state,
             s.id sid,
-            s.inbound_num,
-            s.supplier_name,
+            s.inbound_code,
+            s.supplier_id,
             s.operator,
             s.added_time,
             s.update_time,
@@ -50,11 +50,11 @@
         ON
             d.summary_id = s.id
         <where>
-            <if test="inboundNum != null">
-                s.inbound_num LIKE '%' #{inboundNum} '%'
+            <if test="inboundCode != null">
+                s.inbound_code LIKE '%' #{inboundCode} '%'
             </if>
-            <if test="supplierName != null">
-                AND s.supplier_name LIKE '%' #{supplierName} '%'
+            <if test="supplierId != null">
+                AND s.supplier_id LIKE '%' #{supplierId} '%'
             </if>
         </where>
     </select>

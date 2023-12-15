@@ -15,7 +15,7 @@ public class Category {
     private String categoryName;            // 分类名称
     @NotEmpty
     @Pattern(regexp = "^[A-Z]{1,10}$")
-    private String categoryAcronyms;        // 分类首字母简写
+    private String categoryAcronyms;        // 分类简拼
 
     public interface Add extends Default {}
     public interface Update extends Default {}

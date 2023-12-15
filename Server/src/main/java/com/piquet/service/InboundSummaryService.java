@@ -12,7 +12,7 @@ public interface InboundSummaryService {
 
     void delete(Integer id);
 
-    PageBean<InboundSummary> list(Integer pageNum, Integer pageSize, String inboundNum, String supplierName, String startDate, String endDate);
+    PageBean<InboundSummary> list(Integer pageNum, Integer pageSize, String inboundCode, Integer supplierId, String startDate, String endDate);
 
     void update(InboundSummary inboundSummary);
 }

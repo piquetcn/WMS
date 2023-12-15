@@ -10,5 +10,5 @@ public interface GoodsService {
 
     void update(Goods goods);
 
-    PageBean<Goods> list(Integer pageNum, Integer pageSize, String goodsNum, String goodsName, String goodsCategory, Boolean state);
+    PageBean<Goods> list(Integer pageNum, Integer pageSize, String goodsCode, String goodsName, Integer categoryId, Boolean state);
 }

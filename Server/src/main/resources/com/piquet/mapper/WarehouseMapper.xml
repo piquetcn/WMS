@@ -7,8 +7,8 @@
     <select id="list" resultType="com.piquet.pojo.Warehouse">
         SELECT * FROM t_warehouse
         <where>
-            <if test="warehouseNum != null">
-                warehouse_num LIKE '%' #{warehouseNum} '%'
+            <if test="warehouseCode != null">
+                warehouse_code LIKE '%' #{warehouseCode} '%'
             </if>
             <if test="warehouseName != null">
                 and warehouse_name LIKE '%' #{warehouseName} '%'

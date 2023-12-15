@@ -6,21 +6,21 @@ import lombok.Data;
 @Data
 public class InboundDetail {
 
-    private Integer id;         //主键id
+    private Integer id;             //主键id
     @NotNull
-    private Integer summaryId;   //入库单id
-    @NotEmpty
-    private String goodsNum;     //商品编码
+    private Integer summaryId;      //入库单id
     @NotNull
-    private Float quantity;     //数量
+    private Integer goodsId;        //商品编码
     @NotNull
-    private Float price;        //单价
+    private Float quantity;         //数量
     @NotNull
-    private Float total;        //总金额
-    @NotEmpty
-    private String warehouseNum; //仓库编码
+    private Float price;            //单价
     @NotNull
-    private Boolean state;      //入库状态[0:未入库|1:已入库]
+    private Float total;            //总金额
+    @NotNull
+    private Integer warehouseId;    //仓库ID
+    @NotNull
+    private Boolean state;          //入库状态[0:未入库|1:已入库]
 
     private InboundSummary inboundSummary;
 }

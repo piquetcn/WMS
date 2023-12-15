@@ -1,10 +1,7 @@
 package com.piquet.mapper;
 
 import com.piquet.pojo.Category;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,8 +16,11 @@ public interface CategoryMapper {
     void delete(Integer id);
 
     @Update("UPDATE t_category set " +
-            "category_name=#{categoryName} category_acronyms=#{categoryAcronyms} WHERE id=#{id}")
+            "category_name=#{categoryName}, category_acronyms=#{categoryAcronyms} WHERE id=#{id}")
     void update(Category category);
 
     List<Category> list(String categoryName, String categoryAcronyms);
+
+    @Select("SELECT * FROM t_category")
+    List<Category> findAll();
 }

@@ -7,14 +7,14 @@
     <select id="list" resultType="com.piquet.pojo.Goods">
         SELECT * FROM t_goods
         <where>
-            <if test="goodsNum != null">
-                goods_num LIKE '%' #{goodsNum} '%'
+            <if test="goodsCode != null">
+                goods_code LIKE '%' #{goodsCode} '%'
             </if>
             <if test="goodsName != null">
                 AND goods_name LIKE '%' #{goodsName} '%'
             </if>
-            <if test="goodsCategory != null">
-                AND goods_category = #{goodsCategory}
+            <if test="categoryId != null">
+                AND category_id = #{categoryId}
             </if>
             <if test="state != null">
                 AND state = #{state}

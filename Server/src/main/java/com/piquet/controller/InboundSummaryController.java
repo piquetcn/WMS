@@ -37,12 +37,12 @@ public class InboundSummaryController {
     public Result<PageBean<InboundSummary>> list(
             Integer pageNum,
             Integer pageSize,
-            @RequestParam(required = false) String inboundNum,
-            @RequestParam(required = false) String supplierName,
+            @RequestParam(required = false) String inboundCode,
+            @RequestParam(required = false) Integer supplierId,
             @RequestParam(required = false) String startDate,
             @RequestParam(required = false) String endDate
     ) {
-        PageBean<InboundSummary> pb = inboundSummaryService.list(pageNum, pageSize, inboundNum, supplierName, startDate, endDate);
+        PageBean<InboundSummary> pb = inboundSummaryService.list(pageNum, pageSize, inboundCode, supplierId, startDate, endDate);
         return Result.success(pb);
     }
 }

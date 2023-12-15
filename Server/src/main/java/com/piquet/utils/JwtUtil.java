@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class JwtUtil {
 
-    private static final String KEY = "lubenweinb";
+    private static final String KEY = "lbwnb";
 	
 	//接收业务数据,生成token并返回
     public static String genToken(Map<String, Object> claims) {

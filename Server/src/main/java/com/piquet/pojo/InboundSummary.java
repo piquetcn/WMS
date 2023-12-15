@@ -14,16 +14,16 @@ public class InboundSummary {
 
     @NotNull(groups = Update.class)
     private Integer id;
-    @NotEmpty(groups = Add.class)
-    private String inboundNum;          //入库单号
-    @NotEmpty(groups = Add.class)
-    private String supplierName;        //供应商名称
-    private String operator;            //操作员
+    @NotEmpty
+    private String inboundCode;             //入库单号
+    @NotNull
+    private Integer supplierId;             //供应商ID
+    private Integer operator;               //操作员(用户)ID
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime addedTime;    //制表时间
+    private LocalDateTime addedTime;        //制表时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;   //更新时间
-    private String remarks;             //备注
+    private LocalDateTime updateTime;       //更新时间
+    private String remarks;                 //备注
 
     private List<InboundDetail> inboundDetailList;  //入库明细列表
 

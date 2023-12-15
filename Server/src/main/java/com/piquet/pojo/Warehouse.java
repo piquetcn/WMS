@@ -10,11 +10,12 @@ public class Warehouse {
 
     @NotNull(groups = Update.class)
     private Integer id;                 //主键id
-    @NotEmpty
-    private String warehouseNum;        //仓库编码
+    @NotEmpty(groups = Add.class)
+    private String warehouseCode;        //仓库编码
     @NotEmpty
     private String warehouseName;       //仓库名称
     private String warehouseSize;       //仓库规格
+    private String warehousePic;        //仓库图片
     private String warehouseLocation;   //仓库位置
     private Boolean state;              //仓库状态[0:停用|1:正常]
     private String remarks;              //备注

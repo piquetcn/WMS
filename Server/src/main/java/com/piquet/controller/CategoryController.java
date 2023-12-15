@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -42,5 +44,11 @@ public class CategoryController {
     ) {
         PageBean<Category> pb = categoryService.list(pageNum, pageSize, categoryName, categoryAcronyms);
         return Result.success(pb);
+    }
+
+    @GetMapping("/all")
+    public Result<List<Category>> findAll() {
+        List<Category> cl = categoryService.findAll();
+        return Result.success(cl);
     }
 }
