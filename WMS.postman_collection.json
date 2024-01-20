@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "662dff92-b6e5-4e5b-8633-c271d6b43ebe",
+		"name": "WMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31061627"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register 注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "caocao",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Cc666666+",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login 登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "caocao",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Cc666666+",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userInfo 用户信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/userInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"userInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "supplier_add 添加供应商",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierName\": \"洛圣都贸易有限公司\",\r\n    \"supplierAddr\": \"洛圣都\",\r\n    \"contacts\": \"迈克\",\r\n    \"phone\": \"10086\",\r\n    \"remarks\" : \"你每天都要忘记上千件事，何不把这件事也忘了。\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/supplier",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supplier_update 更新供应商",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"supplierName\": \"洛圣都贸易有限公司\",\r\n    \"supplierAddr\": \"洛圣都\",\r\n    \"contacts\": \"迈克\",\r\n    \"phone\": \"\",\r\n    \"remarks\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/supplier",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supplier_delete 删除供应商",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/supplier?id=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supplier_list 供应商分页查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/supplier?pageNum=1&pageSize=2&supplierName=圣安地列斯贸易",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "supplierName",
+									"value": "圣安地列斯贸易"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "category_add 分类添加",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"枪械\",\r\n    \"categoryAcronyms\": \"QX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/category",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category_delete 分类删除",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category_update 分类更新",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"categoryName\": \"投掷\",\r\n    \"categoryAcronyms\": \"TZ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/category",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category_list 分类分页查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category?pageNum=1&pageSize=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								},
+								{
+									"key": "categoryName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "categoryAcronyms",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Goods",
+			"item": [
+				{
+					"name": "goods_add 添加商品",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"goodsNum\": \"QZ0001\",\r\n    \"goodsName\": \"M416\",\r\n    \"goodsSpec\": \"5.56mm\",\r\n    \"goodsUnit\": \"支\",\r\n    \"goodsCategory\": \"枪械\",\r\n    \"goodsPic\": \"\",\r\n    \"manufacturer\": \"\",\r\n    \"minInventory\": 20,\r\n    \"state\": 1,\r\n    \"remarks\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/goods",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"goods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "goods_update 更新商品",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"goodsNum\": \"QZ0001\",\r\n    \"goodsName\": \"M416\",\r\n    \"goodsSpec\": \"5.56mm\",\r\n    \"goodsUnit\": \"支\",\r\n    \"goodsCategory\": \"枪械\",\r\n    \"goodsPic\": \"\",\r\n    \"manufacturer\": \"\",\r\n    \"minInventory\": 50,\r\n    \"state\": 1,\r\n    \"remarks\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/goods",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"goods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "goods_delete 删除商品",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/goods?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"goods"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "goods_list 商品分页查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/goods?pageNum=1&pageSize=3&state=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"goods"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								},
+								{
+									"key": "goodsNum",
+									"value": "TZ",
+									"disabled": true
+								},
+								{
+									"key": "goodsName",
+									"value": "AK",
+									"disabled": true
+								},
+								{
+									"key": "goodsCategory",
+									"value": "投掷",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Warehouse",
+			"item": [
+				{
+					"name": "Warehouse_add 添加仓库",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"warehouseNum\": \"TCC001\",\r\n    \"warehouseName\": \"仓库1\",\r\n    \"warehouseSize\": \"5m*10m*5m\",\r\n    \"warehouseLocation\": \"xx路xx号xx楼xx室\",\r\n    \"state\": 1,\r\n    \"remarks\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/warehouse",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"warehouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Warehouse_update 更新仓库",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"warehouseNum\": \"TCC001\",\r\n    \"warehouseName\": \"仓库1\",\r\n    \"warehouseSize\": \"5m*10m*10m\",\r\n    \"warehouseLocation\": \"xx路xx号xx楼xx室\",\r\n    \"state\": 1,\r\n    \"remarks\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/warehouse",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"warehouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Warehouse_delete 删除仓库",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/warehouse?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"warehouse"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Warehouse_list 仓库分页查询",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inbound Summary",
+			"item": [
+				{
+					"name": "inboundSummary_add 入库单添加",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inboundNum\": \"RQ000003\",\r\n    \"supplierName\": \"洛圣都贸易有限公司\",\r\n    \"inboundDetailList\": [\r\n        {\r\n            \"goodsNum\": \"QZ0001\",\r\n            \"quantity\": 50.0,\r\n            \"price\": 10.0,\r\n            \"total\": 500.0,\r\n            \"warehouseNum\": \"TCC001\",\r\n            \"state\": true\r\n        },\r\n        {\r\n            \"goodsNum\": \"QZ0002\",\r\n            \"quantity\": 90.0,\r\n            \"price\": 10.0,\r\n            \"total\": 900.0,\r\n            \"warehouseNum\": \"TCC001\",\r\n            \"state\": true\r\n        }\r\n    ],\r\n    \"remarks\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/inboundSummary",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inboundSummary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inboundSummary_update 入库单更新",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 5,\r\n    \"supplierName\": \"洛圣都贸易有限公司\",\r\n    \"inboundDetailList\": [\r\n        {\r\n            \"goodsNum\": \"QZ0001\",\r\n            \"quantity\": 70.0,\r\n            \"price\": 9.0,\r\n            \"total\": 630.0,\r\n            \"warehouseNum\": \"TCC001\",\r\n            \"state\": false\r\n        }\r\n    ],\r\n    \"remarks\": \"carbon\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/inboundSummary",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inboundSummary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inboundSummary_list 入库单分页查询",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "inboundSummary_delete 入库单删除",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/inboundSummary?id=9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inboundSummary"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.addHeader(\"Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGFpbXMiOnsibmlja25hbWUiOm51bGwsImlkIjoxLCJ1c2VybmFtZSI6ImNhb2NhbyJ9LCJleHAiOjE3MDIzNDU4NTN9.SfSRbE841zoADI1cEabDdYZjzaqOGoYah-NhcCZEE04\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

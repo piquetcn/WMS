@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.piquet.mapper.InboundSummaryMapper">
+
+    <resultMap id="BaseResult" type="com.piquet.pojo.InboundSummary">
+        <id column="id" property="id"/>
+        <result column="inbound_code" property="inboundCode"/>
+        <result column="supplier_id" property="supplierId"/>
+        <result column="operator" property="operator"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="remarks" property="remarks"/>
+        
+        <collection property="inboundDetailList" ofType="com.piquet.pojo.InboundDetail">
+            <id column="did" property="id"/>
+            <result column="summary_id" property="summaryId"/>
+            <result column="goods_id" property="goodsId"/>
+            <result column="quantity" property="quantity"/>
+            <result column="price" property="price"/>
+            <result column="total" property="total"/>
+            <result column="warehouse_id" property="warehouseId"/>
+            <result column="state" property="state"/>
+        </collection>
+    </resultMap>
+
+    <select id="list" resultMap="BaseResult">
+        SELECT
+            s.id,
+            s.inbound_code,
+            s.supplier_id,
+            s.operator,
+            s.create_time,
+            s.update_time,
+            s.remarks,
+            d.id did,
+            d.summary_id,
+            d.goods_id,
+            d.quantity,
+            d.price,
+            d.total,
+            d.warehouse_id,
+            d.state
+        FROM
+            t_inbound_summary s
+        LEFT JOIN
+            t_inbound_detail d
+        ON
+            d.summary_id = s.id
+        <where>
+            <if test="inboundCode != null">
+                s.inbound_code LIKE '%' #{inboundCode} '%' AND
+            </if>
+            <if test="supplierId != null">
+                s.supplier_id = #{supplierId} AND
+            </if>
+            s.update_time BETWEEN #{startDate} AND #{endDate}
+        </where>
+        ORDER BY s.id
+    </select>
+</mapper>

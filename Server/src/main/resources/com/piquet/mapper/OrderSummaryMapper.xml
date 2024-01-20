@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.piquet.mapper.OrderSummaryMapper">
+
+    <resultMap id="BaseResult" type="com.piquet.pojo.OrderSummary">
+        <id column="id" property="id"/>
+        <result column="store_id" property="storeId"/>
+        <result column="order_code" property="orderCode"/>
+        <result column="recipient_name" property="recipientName"/>
+        <result column="recipient_phone" property="recipientPhone"/>
+        <result column="recipient_address" property="recipientAddress"/>
+        <result column="remarks" property="remarks"/>
+        <result column="create_time" property="createTime"/>
+        <result column="payment_time" property="paymentTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="state" property="state"/>
+
+        <collection property="orderDetailList" ofType="com.piquet.pojo.OrderDetail">
+            <id column="did" property="id"/>
+            <result column="order_id" property="orderId"/>
+            <result column="goods_id" property="goodsId"/>
+            <result column="quantity" property="quantity"/>
+            <result column="price" property="price"/>
+            <result column="total" property="total"/>
+            <result column="state" property="state"/>
+        </collection>
+    </resultMap>
+
+    <select id="list" resultMap="BaseResult">
+        SELECT
+        s.id,
+        s.store_id,
+        s.order_code,
+        s.recipient_name,
+        s.recipient_phone,
+        s.recipient_address,
+        s.remarks,
+        s.create_time,
+        s.payment_time,
+        s.update_time,
+        s.state,
+        d.id did,
+        d.order_id,
+        d.goods_id,
+        d.quantity,
+        d.price,
+        d.total,
+        d.state
+        FROM
+        t_order_summary s
+        LEFT JOIN
+        t_order_detail d
+        ON
+        d.order_id = s.id
+        <where>
+            <if test="orderCode != null">
+                s.order_code LIKE '%' #{orderCode} '%' AND
+            </if>
+            <if test="recipientName != null">
+                s.recipient_name = #{recipientName} AND
+            </if>
+            <if test="recipientPhone != null">
+                s.recipient_phone = #{recipientPhone} AND
+            </if>
+            <if test="recipientAddress != null">
+                s.recipient_address = #{recipientAddress} AND
+            </if>
+            <if test="state != null">
+                s.state = #{state} AND
+            </if>
+            s.create_time BETWEEN #{startCreateTime} AND #{endCreateTime}
+            AND s.payment_time BETWEEN #{startPaymentTime} AND #{endPaymentTime}
+            AND s.update_time BETWEEN #{startUpdateTime} AND #{endUpdateTime}
+        </where>
+        ORDER BY s.id
+    </select>
+</mapper>

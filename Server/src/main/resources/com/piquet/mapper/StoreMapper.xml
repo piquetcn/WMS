@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.piquet.mapper.StoreMapper">
+    <!-- 动态sql -->
+    <select id="list" resultType="com.piquet.pojo.Store">
+        SELECT * FROM t_store
+        <where>
+            <if test="storeName != null">
+                store_name LIKE '%' #{storeName} '%'
+            </if>
+            <if test="platformId != null">
+                AND platform_id = #{platformId}
+            </if>
+            <if test="state != null">
+                AND state = #{state}
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+</mapper>
